@@ -17,7 +17,7 @@ A brief one-line description of what this project does and who it's for.
 
 ```bash
 # clone the repo
-git clone <repo-url>
+git clone https://github.com/jwsephdev/flyrank-frontend-ai-capstone.git
 
 # install dependencies
 npm install
