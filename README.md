@@ -1,10 +1,24 @@
 # Capstone Project
 
-## My Stack
+A brief one-line description of what this project does and who it's for.
 
-React JS
-JavaScript
-Tailwind
+## Tech Stack
 
-Python
-Node JS
+**Frontend**
+- React
+- JavaScript
+- Tailwind CSS
+
+**Backend**
+- Node.js
+- Python
+
+## Getting Started
+
+```bash
+# clone the repo
+git clone <repo-url>
+
+# install dependencies
+npm install
+```
