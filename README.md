@@ -1,6 +1,6 @@
 # Capstone Project
 
-A brief one-line description of what this project does and who it's for.
+My Flyrank AI Front-end Internship Github Repo
 
 ## Tech Stack
 
