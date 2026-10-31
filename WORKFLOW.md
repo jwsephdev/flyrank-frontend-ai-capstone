@@ -1,33 +1,44 @@
-# AGENTS.md
+# Workflow Comparison: Vague vs. Precise Prompting
 
-## Project
-Front-end portfolio site. Goal: show that I can design and build clean, functional front-end web applications, and get visitors to contact me for a job offer or interview.
+**Feature:** Settings form with validation (display name, email, bio, notifications toggle)
 
-## Stack and commands
-- React + Tailwind CSS
-- Tests: Vitest + React Testing Library
-- Run dev server: `npm run dev`
-- Run tests: `npm test`
-- [FILL: adjust any of the above to match the repo]
+**Branches:**
+- `settings-form-vague`: one-line prompt ("Add a settings form to my app."), output accepted unedited.
+- `settings-form-precise`: plan mode, file references, constraints, example behavior, and a write-tests-then-run-them step.
 
-## Rules
+## Correctness
 
-### Scope and dependencies
-- Do not add new dependencies (no form libraries, validation libraries, or UI kits) without asking first. Use React state and Tailwind.
-- Only create or edit the files named in the task. If another file needs to change, stop and ask.
-- Follow the existing component pattern in `src/components/ContactForm.jsx` (file naming, export style, folder layout) for any new component.
+**Vague:** [FILL: what actually worked or broke. Cite file and line. e.g. "Email is validated only on submit (`SettingsForm.jsx` L41); the name field has no required check, so an empty name submits successfully."]
 
-### Forms and accessibility
-- Every form input needs a visible `<label>` linked with `htmlFor`/`id`. Never use placeholder text as the label.
-- Invalid inputs must set `aria-invalid="true"` and `aria-describedby` pointing to the error message. Error messages use `role="alert"` or an `aria-live` region.
-- All interactive controls must work by keyboard and show a visible focus style. Custom toggles must use a real checkbox or `role="switch"` with `aria-checked`, never a bare `<div>` with a click handler.
-- Validate on blur and on submit. On a failed submit, move focus to the first invalid field.
-- Trim whitespace before validating text fields, and disable the submit button while submitting to prevent double submission.
+**Precise:** [FILL: e.g. "Validates on blur and on submit; all rules from the spec are enforced. X of Y tests pass on first run (`SettingsForm.test.jsx`)."]
 
-### Verification
-- After writing a feature, write tests for each validation rule and edge case (empty, whitespace-only, over-length, invalid format), run them, and show the real output before saying the work is done.
-- Do not say "tests pass" unless the test output was shown in this session.
-- When a spec is ambiguous or conflicts with the codebase, list the assumption in the plan instead of guessing silently.
+## Accessibility
 
-### Workflow
-- For any feature larger than one component, explore the codebase and present a plan for approval before writing code.
+**Vague:** [FILL: e.g. "Inputs rely on placeholder text with no `<label>` (L18-30); errors are plain `<p>` tags with no `aria-describedby` or `aria-invalid`; the toggle is a styled `<div>` and cannot be reached by keyboard."]
+
+**Precise:** [FILL: e.g. "Every input has a linked label; invalid fields set `aria-invalid` and `aria-describedby`; errors use `role="alert"`; focus moves to the first invalid field on submit."]
+
+## Edge cases
+
+[FILL with at least three concrete cases tested on BOTH branches. e.g. whitespace-only name, email `abc`, 161-character bio, double-clicking submit, empty form submit.]
+
+| Case | Vague | Precise |
+|---|---|---|
+| Name `"   "` | [accepted / rejected] | [accepted / rejected] |
+| Email `abc` | [ ] | [ ] |
+| 161-char bio | [ ] | [ ] |
+| Double submit | [ ] | [ ] |
+
+## Review effort
+
+**Vague:** [FILL: minutes spent finding problems, lines changed, tests present or absent.]
+
+**Precise:** [FILL: minutes spent reviewing the plan plus the code; number of times I had to intervene; lines changed; test count.]
+
+## An AI mistake I caught
+
+in the vague prompt, the ai just made up stuff and design, i guess because the prompt itself was too vague to the point that the ai needed to fill in the gaps.
+
+## Takeaway
+
+It wasnt the AI's fault for the vague prompt, because it was vague it was only working with what it was told and therefore needed to fill in the gaps. in future prompts need to make a proper master prompt and plan first.
